@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>
+    // Runs synchronously during HTML parsing - BEFORE first paint
+    (function() {
+      const getPageType = () => {
+        const pathname = window.location.pathname;
+        const filename = pathname.split("/").pop() || pathname;
+        if (filename.includes("-driver-results.html")) return "driver-results";
+        if (filename.includes("-standings.html")) return "standings";
+        return pathname.replace(/\//g, "_") || "root";
+      };
+      
+      const tableId = "tableDrivers";
+      const storageKey = `columnFilter_${getPageType()}_${tableId}`;
+      const hidden = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      
+      if (hidden.length > 0) {
+        const css = hidden.map(idx => 
+          `#${tableId} thead th:nth-child(${idx + 1}),
+           #${tableId} tbody tr td:nth-child(${idx + 1})`
+        ).join(',') + '{ display: none !important; }';
+        
+        document.write(`<style id="filter-preload">${css}</style>`);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="icon" href="./assets/SRS.png">
+  <title>SRS EAWRC | SRS EAWRC Latvia Driver Results</title>
+</head>
+
+<body class="theme-dark" style="background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+  <header class="siteHeader">
+  <div class="siteHeader__bar">
+    <div class="navLeft navDesktopOnly">
+      <div class="dropdown">
+        <a class="brand" href="/index.html" aria-label="Home">
+          <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
+        </a>
+
+        <div class="dropdown__menu" role="menu">
+
+        </div>
+      </div>
+    </div>
+
+<nav class="navMain navDesktopOnly" aria-label="Primary">
+    <div class="navDrop" tabindex="0">
+      <button class="navBtn" type="button" aria-haspopup="true">
+        Driver Standings
+      </button>
+
+      <div class="navMenu">
+            <a class="navLink isActive" href="./srs-eawrc-driver-standings.html">
+              SRS EAWRC
+            </a>
+      </div>
+    </div>
+
+
+</nav>
+
+
+      <div class="navRight navDesktopOnly">
+        <img
+          class="flag"
+          src="./assets/country-flags/lva.png"
+          alt="lva"
+        />
+        <span id="countdown2" class="countdown"></span>
+      </div>
+
+    <button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="seriesMobileNav"
+      aria-label="Choose series"
+      onclick="toggleControlledNav(this)"
+    >
+      <img class="brand__img brand__img--mobile" src="./assets/SRS.png" alt="Logo" />
+    </button>
+
+    <div class="navTitle navMobileOnly">
+          <div class="navTitle__main">driver - SRS EAWRC</div>
+      <div id="countdown" class="countdown"></div>
+    </div>
+
+		<button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="mobileNav"
+      aria-label="Open menu"
+      onclick="toggleControlledNav(this)"
+    >
+      <span class="hamburger" aria-hidden="true">☰</span>
+    </button>
+  </div>
+
+  <div id="mobileNav" class="drawer" hidden>
+    <nav class="drawer__content" aria-label="Mobile menu">
+          <a class="drawer__link isActive" href="./srs-eawrc-driver-standings.html">
+            Driver Standings - SRS EAWRC
+          </a>
+
+
+    </nav>
+  </div>
+
+  <div id="seriesMobileNav" class="drawer" hidden>
+    <div class="drawer__content">
+
+    </div>
+  </div>
+
+    <div class="secondaryNav">
+        <a
+          class="secondaryNav__item"
+          href="./srs-eawrc-0-driver-results.html"
+          style=""
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/lva.png" alt="lva" />
+        </a>
+    </div>
+</header>
+
+<script>
+  var countDownDate = new Date("2026-03-23T00:00:00Z").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+    var c3 = document.getElementById("homeCountdown");
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    if (c3) c3.innerHTML = text;
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      if (c3) c3.innerHTML = "Event Ended";
+    }
+  }, 1000);
+</script>
+
+  <div class="container">
+  <div class="flexContainer">
+    <div class="flexBox">
+      <div class="mb-1 hide-medium hide-small">
+        <div class="logo d-flex">
+          <img src="./assets/SRS.png" />
+          <h2 class="ml-1">SRS EAWRC Latvia Driver Results</h2>
+        </div>
+      </div>
+      <div class="column-filter">
+        <button class="column-filter__btn" type="button" aria-label="Filter columns">
+          <span>Filter Columns</span>
+        </button>
+        <div class="column-filter__menu">
+          <div class="column-filter__items"></div>
+          <div class="column-filter__actions">
+            <button class="column-filter__action-btn" data-action="show-all">Show All</button>
+            <button class="column-filter__action-btn" data-action="close">Close</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-scroll-indicator" id="tableScrollIndicator" aria-hidden="true">
+        <div class="table-scroll-indicator__content"></div>
+      </div>
+      <div class="table-scroll-wrapper">
+        <table id="tableDrivers">
+          <thead>
+            <tr>
+              <th class="th-pos">Pos</th>
+              <th class="th-nat">Nat</th>
+              <th class="th-driver">Driver</th>
+              <th class="th-car">Car</th>
+              <th class="th-car-name">Car Name</th>
+              <th class="th-total">Total</th>
+              <th class="th-diff">Diff</th>
+              <th class="th-points">Points</th>
+              <th class="th-total-points">Total Points</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <p>Last updated at: 2026-03-09T08:41:10Z</p>
+      </div>
+      <div class="text-center">
+        <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">full results</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="./assets/js/app.js" defer></script>
+</body>
+
+</html>
