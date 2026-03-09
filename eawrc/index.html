@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <link rel="icon" href="./assets/SRS.png">
-  <title>SRS EAWRC | SRS EAWRC – Driver Standings</title>
+  <title>SRS EAWRC | Home</title>
 </head>
 
 <body class="theme-dark" style="background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
@@ -40,7 +40,7 @@
   <div class="siteHeader__bar">
     <div class="navLeft navDesktopOnly">
       <div class="dropdown">
-        <a class="brand" href="/index.html" aria-label="Home">
+        <a class="brand" href="./index.html" aria-label="Home">
           <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
         </a>
 
@@ -57,7 +57,7 @@
       </button>
 
       <div class="navMenu">
-            <a class="navLink isActive" href="./srseawrc-driver-standings.html">
+            <a class="navLink " href="./srseawrc-driver-standings.html">
               SRS EAWRC
             </a>
       </div>
@@ -87,7 +87,7 @@
     </button>
 
     <div class="navTitle navMobileOnly">
-          <div class="navTitle__main">driver - SRS EAWRC</div>
+          <div class="navTitle__main">SRS EAWRC</div>
       <div id="countdown" class="countdown"></div>
     </div>
 
@@ -104,7 +104,7 @@
 
   <div id="mobileNav" class="drawer" hidden>
     <nav class="drawer__content" aria-label="Mobile menu">
-          <a class="drawer__link isActive" href="./srseawrc-driver-standings.html">
+          <a class="drawer__link " href="./srseawrc-driver-standings.html">
             Poängställning - SRS EAWRC
           </a>
 
@@ -118,15 +118,6 @@
     </div>
   </div>
 
-    <div class="secondaryNav">
-        <a
-          class="secondaryNav__item"
-          href="./srseawrc-0-driver-results.html"
-          style=""
-        >
-          <img class="secondaryNav__flag" src="./assets/country-flags/lva.png" alt="lva" />
-        </a>
-    </div>
 </header>
 
 <script>
@@ -161,93 +152,178 @@
   <div class="container">
   <div class="flexContainer">
     <div class="flexBox">
-      <div class="mb-1 hide-medium hide-small">
+      <div class="mb-1">
         <div class="logo d-flex">
           <img src="./assets/SRS.png" />
-          <h2 class="ml-1">SRS EAWRC Poängställning</h2>
+          <h2 class="ml-1">SRS EAWRC Hem</h2>
         </div>
       </div>
-      <div class="column-filter">
-        <button class="column-filter__btn" type="button" aria-label="Filter columns">
-          <span>Filter Columns</span>
-        </button>
-        <div class="column-filter__menu">
-          <div class="column-filter__items"></div>
-          <div class="column-filter__actions">
-            <button class="column-filter__action-btn" data-action="show-all">Show All</button>
-            <button class="column-filter__action-btn" data-action="close">Close</button>
+      <div class="home-layout">
+        <main class="home-main">
+      <div class="home-hero card mb-1">
+        <div class="card-header">
+          <h3>🏁 Nuvarande tävling: Latvia</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>SRS EAWRC</strong> - Latvia</p>
+          <div class="home-hero__live mb-1">
+            <img class="flag" src="./assets/country-flags/lva.png" alt="lva" />
+            <span id="homeCountdown" class="countdown"></span>
+          </div>
+          <div class="home-actions">
+            <a href="./srseawrc-0-driver-results.html" class="home-btn home-btn--primary">
+              Visa resultat
+            </a>
+            <a href="./srseawrc-driver-standings.html" class="home-btn">
+              Visa ställning
+            </a>
           </div>
         </div>
       </div>
-      <div class="table-scroll-indicator" id="tableScrollIndicator" aria-hidden="true">
-        <div class="table-scroll-indicator__content"></div>
-      </div>
-      <div class="table-scroll-wrapper">
-        <table id="tableDrivers">
-          <thead>
-            <tr>
-              <th class="th-pos">Pos</th>
-              <th class="th-change"></th>
-              <th class="th-nat">Nat</th>
-              <th class="th-driver">Förare</th>
 
-                <th class="th-location">
-                  <a href="./srseawrc-0-driver-results.html" style="">
-                    <img src="./assets/country-flags/lva.png" alt="lva" title="lva"/>
-                  </a>
-                </th>
-              <th class="th-points">Poäng</th>
-              <th class="th-adr">ADR*</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td-pos">1</td>
-              <td class="td-change">
-                <span class="neutral">=</span>
-              </td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">Zicc94</td>
-              <td class="td-result">
-                30
-              </td>
-              <td class="td-points bold">30</td>
-              <td class="td-adr bold">0</td>
-            </tr>
-            <tr>
-              <td class="td-pos">2</td>
-              <td class="td-change">
-                <span class="neutral">=</span>
-              </td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">Mankan1966</td>
-              <td class="td-result">
-                
-              </td>
-              <td class="td-points bold">0</td>
-              <td class="td-adr bold">0</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card mb-1 next-event-card">
+        <div class="card-header">
+          <h3>📅 Nästa tävling: Scandia</h3>
+        </div>
+        <div class="card-body">
+          <p>
+            <img src="./assets/country-flags/nor.png" class="img-sm" alt="nor" />
+            <strong>SRS EAWRC</strong> - Scandia
+          </p>
+          <p>Startar: March 23, 2026 at 12:00 AM</p>
+        </div>
       </div>
-      <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-03-09T19:39:35Z</p>
+
+      <div class="home-cards-grid">
+
+      <div class="card card--full-bg mb-1">
+        <div class="card-header">
+          <h3>⚔️ Mästerskapsstrider</h3>
+        </div>
+        <div class="card-body">
+          <div class="battle-item tight-battle">
+            <h4>SRS EAWRC</h4>
+            <div class="battle-leaders">
+              <div class="battle-driver">
+                <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+                <strong>Zicc94</strong>
+                <span class="points">30 poäng</span>
+              </div>
+              <div class="battle-gap">
+                <span class="gap-value">5 poängs skillnad</span>
+                <span class="gap-status tight">Jämnt!</span>
+              </div>
+              <div class="battle-driver">
+                <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+                funkisarna
+                <span class="points">25 poäng</span>
+              </div>
+            </div>
+            <p class="battle-remaining">6 tävlingar kvar</p>
+            <a href="./srseawrc-driver-standings.html" class="home-btn-inline">Visa ställning</a>
+          </div>
+          
+        </div>
       </div>
-      <div class="text-center">
-        <p>*After Dropped Rounds: total points after 1 lowest scoring rounds removed</p>
       </div>
-      <div class="text-center">
-        <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">fullständigt resultat</a>
+
+
+
+      <div class="card mb-1">
+        <div class="card-header">
+          <h3>📊 Säsongsstatistik</h3>
+        </div>
+        <div class="card-body">
+          <div class="season-stats-division">
+            <h4>SRS EAWRC</h4>
+            <div class="season-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Genomförda tävlingar</span>
+                <span class="stat-value">0 / 6</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Genomsnittligt antal deltagare</span>
+                <span class="stat-value">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">DNF-frekvens</span>
+                <span class="stat-value">0%</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="card mb-1">
+        <div class="card-header">
+          <h3>Mästerskapsregler</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Stryktävlingar:</strong> 1 lägst poäng tävling stryks</p>
+          <p><strong>Poäng (Topp 5):</strong> 25, 21, 18, 16, 14</p>
+          <p><strong>Power Stage-poäng:</strong> 5, 4, 3, 2, 1</p>
+        </div>
+      </div>
+
+        <div class="top-drivers-by-division mb-1">
+          <h3>Topp 3 förare — per division</h3>
+          <div class="top-drivers-division-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>SRS EAWRC</h3>
+            </div>
+            <div class="card-body">
+              <table class="top-drivers-table">
+                <tbody>
+                  <tr>
+                    <td class="td-pos">1</td>
+                    <td class="td-change">
+                      <span class="neutral">=</span>
+                    </td>
+                    <td class="td-nat">
+                      <img src="./assets/country-flags/swe.png" class="img-sm"
+                        alt="swe" title="swe" />
+                    </td>
+                    <td class="td-driver text-left bold">Zicc94</td>
+                    <td class="td-points bold">30</td>
+                  </tr>
+                  <tr>
+                    <td class="td-pos">2</td>
+                    <td class="td-change">
+                      <span class="neutral">=</span>
+                    </td>
+                    <td class="td-nat">
+                      <img src="./assets/country-flags/swe.png" class="img-sm"
+                        alt="swe" title="swe" />
+                    </td>
+                    <td class="td-driver text-left bold">funkisarna</td>
+                    <td class="td-points bold">25</td>
+                  </tr>
+                  <tr>
+                    <td class="td-pos">3</td>
+                    <td class="td-change">
+                      <span class="neutral">=</span>
+                    </td>
+                    <td class="td-nat">
+                      <img src="./assets/country-flags/swe.png" class="img-sm"
+                        alt="swe" title="swe" />
+                    </td>
+                    <td class="td-driver text-left bold">Mankan1966</td>
+                    <td class="td-points bold">0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+        </main>
       </div>
     </div>
   </div>
 </div>
+
   <script src="./assets/js/app.js" defer></script>
 </body>
 
