@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>
+    // Runs synchronously during HTML parsing - BEFORE first paint
+    (function() {
+      const getPageType = () => {
+        const pathname = window.location.pathname;
+        const filename = pathname.split("/").pop() || pathname;
+        if (filename.includes("-driver-results.html")) return "driver-results";
+        if (filename.includes("-standings.html")) return "standings";
+        return pathname.replace(/\//g, "_") || "root";
+      };
+      
+      const tableId = "tableDrivers";
+      const storageKey = `columnFilter_${getPageType()}_${tableId}`;
+      const hidden = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      
+      if (hidden.length > 0) {
+        const css = hidden.map(idx => 
+          `#${tableId} thead th:nth-child(${idx + 1}),
+           #${tableId} tbody tr td:nth-child(${idx + 1})`
+        ).join(',') + '{ display: none !important; }';
+        
+        document.write(`<style id="filter-preload">${css}</style>`);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="icon" href="./assets/SRS.png">
+  <title>SRS DR2.0 | Home</title>
+</head>
+
+<body class="theme-dark" style="background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+  <header class="siteHeader">
+  <div class="siteHeader__bar">
+    <div class="navLeft navDesktopOnly">
+      <div class="dropdown">
+        <a class="brand" href="./index.html" aria-label="Home">
+          <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
+        </a>
+
+        <div class="dropdown__menu" role="menu">
+            <div class="dropdown__title">— serier —</div>
+              <a class="dropdown__item" href="/eawrc">SRS EAWRC</a>
+
+        </div>
+      </div>
+    </div>
+
+<nav class="navMain navDesktopOnly" aria-label="Primary">
+    <div class="navDrop" tabindex="0">
+      <button class="navBtn" type="button" aria-haspopup="true">
+        Poängställning
+      </button>
+
+      <div class="navMenu">
+            <a class="navLink " href="./srsdr2-driver-standings.html">
+              SRS DR2.0
+            </a>
+      </div>
+    </div>
+
+
+</nav>
+
+
+      <div class="navRight navDesktopOnly">
+        <img
+          class="flag"
+          src="./assets/country-flags/welsh.png"
+          alt="welsh"
+        />
+        <span id="countdown2" class="countdown"></span>
+      </div>
+
+    <button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="seriesMobileNav"
+      aria-label="Choose series"
+      onclick="toggleControlledNav(this)"
+    >
+      <img class="brand__img brand__img--mobile" src="./assets/SRS.png" alt="Logo" />
+    </button>
+
+    <div class="navTitle navMobileOnly">
+          <div class="navTitle__main">SRS DR2.0</div>
+      <div id="countdown" class="countdown"></div>
+    </div>
+
+		<button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="mobileNav"
+      aria-label="Open menu"
+      onclick="toggleControlledNav(this)"
+    >
+      <span class="hamburger" aria-hidden="true">☰</span>
+    </button>
+  </div>
+
+  <div id="mobileNav" class="drawer" hidden>
+    <nav class="drawer__content" aria-label="Mobile menu">
+          <a class="drawer__link " href="./srsdr2-driver-standings.html">
+            Poängställning - SRS DR2.0
+          </a>
+
+
+    </nav>
+  </div>
+
+  <div id="seriesMobileNav" class="drawer" hidden>
+    <div class="drawer__content">
+        <div class="drawer__title">— serier —</div>
+          <a class="drawer__link" href="/eawrc">SRS EAWRC</a>
+
+    </div>
+  </div>
+
+</header>
+
+<script>
+  var countDownDate = new Date("2026-03-30T03:00:00Z").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+    var c3 = document.getElementById("homeCountdown");
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    if (c3) c3.innerHTML = text;
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      if (c3) c3.innerHTML = "Event Ended";
+    }
+  }, 1000);
+</script>
+
+  <div class="container">
+  <div class="flexContainer">
+    <div class="flexBox">
+      <div class="mb-1">
+        <div class="logo d-flex">
+          <img src="./assets/SRS.png" />
+          <h2 class="ml-1">SRS DR2.0 Hem</h2>
+        </div>
+      </div>
+      <div class="home-layout">
+        <main class="home-main">
+      <div class="home-hero card mb-1">
+        <div class="card-header">
+          <h3>🏁 Nuvarande tävlingar</h3>
+        </div>
+        <div class="card-body">
+          <div class="current-event-item">
+            <p><strong>SRS DR2.0</strong> - Wales</p>
+            <div class="home-actions">
+              <a href="./srsdr2-0-driver-results.html" class="home-btn home-btn--primary">
+                Visa resultat
+              </a>
+              <a href="./srsdr2-driver-standings.html" class="home-btn">
+                Visa ställning
+              </a>
+            </div>
+          </div>
+          <hr class="last-event-separator">
+          <div class="home-hero__live mb-1">
+            <img class="flag" src="./assets/country-flags/welsh.png" alt="welsh" />
+            <span id="homeCountdown" class="countdown"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-1 next-event-card">
+        <div class="card-header">
+          <h3>📅 Nästa tävling: Greece</h3>
+        </div>
+        <div class="card-body">
+          <p>
+            <img src="./assets/country-flags/grc.png" class="img-sm" alt="grc" />
+            <strong>SRS DR2.0</strong> - Greece
+          </p>
+        </div>
+      </div>
+
+      <div class="home-cards-grid">
+
+      </div>
+
+
+
+      <div class="card mb-1">
+        <div class="card-header">
+          <h3>📊 Säsongsstatistik</h3>
+        </div>
+        <div class="card-body">
+          <div class="season-stats-division">
+            <h4>SRS DR2.0</h4>
+            <div class="season-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Genomförda tävlingar</span>
+                <span class="stat-value">0 / 6</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Genomsnittligt antal deltagare</span>
+                <span class="stat-value">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">DNF-frekvens</span>
+                <span class="stat-value">0%</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="card mb-1">
+        <div class="card-header">
+          <h3>Mästerskapsregler</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Drop Rounds:</strong> 1 lägst poängsatta tävling stryks</p>
+          <p><strong>Poäng (Topp 5):</strong> 25, 21, 18, 16, 14</p>
+          <p><strong>Power Stage-poäng:</strong> 5, 4, 3, 2, 1</p>
+          <div class="home-rules__division">
+            <p><strong>SRS DR2.0</strong></p>
+            <p><strong>Tillåtna bilar:</strong></p>
+            <ul>
+              <li>Ford Fiesta R5</li>
+              <li>ŠKODA Fabia R5</li>
+              <li>Mitsubishi Space Star R5</li>
+              <li>Citroën C3 R5</li>
+              <li>Volkswagen Polo GTI R5</li>
+              <li>Peugeot 208 T16 R5</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <div class="top-drivers-by-division mb-1">
+          <h3>Topp 3 förare — per division</h3>
+          <div class="top-drivers-division-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>SRS DR2.0</h3>
+            </div>
+            <div class="card-body">
+              <table class="top-drivers-table">
+                <tbody>
+                  <tr>
+                    <td class="td-pos">1</td>
+                    <td class="td-change">
+                      <span class="neutral">=</span>
+                    </td>
+                    <td class="td-nat">
+                      <img src="./assets/country-flags/swe.png" class="img-sm"
+                        alt="swe" title="swe" />
+                    </td>
+                    <td class="td-driver text-left bold">Klimpen84</td>
+                    <td class="td-points bold">30</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="./assets/js/app.js" defer></script>
+</body>
+
+</html>
