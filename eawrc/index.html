@@ -69,14 +69,6 @@
 </nav>
 
 
-      <div class="navRight navDesktopOnly">
-        <img
-          class="flag"
-          src="./assets/country-flags/est.png"
-          alt="est"
-        />
-        <span id="countdown2" class="countdown"></span>
-      </div>
 
     <button
       type="button"
@@ -90,7 +82,7 @@
 
     <div class="navTitle navMobileOnly">
           <div class="navTitle__main">SRS EAWRC</div>
-      <div id="countdown" class="countdown"></div>
+      
     </div>
 
 		<button
@@ -124,34 +116,6 @@
 
 </header>
 
-<script>
-  var countDownDate = new Date("2026-06-01T00:00:00Z").getTime();
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    var c1 = document.getElementById("countdown");
-    var c2 = document.getElementById("countdown2");
-    var c3 = document.getElementById("homeCountdown");
-    if (c1) c1.innerHTML = text;
-    if (c2) c2.innerHTML = text;
-    if (c3) c3.innerHTML = text;
-
-    if (distance < 0) {
-      clearInterval(x);
-      if (c1) c1.innerHTML = "Event Ended";
-      if (c2) c2.innerHTML = "Event Ended";
-      if (c3) c3.innerHTML = "Event Ended";
-    }
-  }, 1000);
-</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -169,21 +133,11 @@
           <h3>🏁 Nuvarande tävlingar</h3>
         </div>
         <div class="card-body">
-          <div class="current-event-item">
-            <p><strong>SRS EAWRC</strong> - Estonia</p>
-            <div class="home-actions">
-              <a href="./srseawrc-5-driver-results.html" class="home-btn home-btn--primary">
-                Visa resultat
-              </a>
-              <a href="./srseawrc-driver-standings.html" class="home-btn">
-                Visa ställning
-              </a>
-            </div>
-          </div>
-          <hr class="last-event-separator">
-          <div class="home-hero__live mb-1">
-            <img class="flag" src="./assets/country-flags/est.png" alt="est" />
-            <span id="homeCountdown" class="countdown"></span>
+          <p>Inga tävlingar är aktiva</p>
+          <div class="home-actions">
+            <a href="./srseawrc-driver-standings.html" class="home-btn home-btn--primary">
+              Visa ställning
+            </a>
           </div>
         </div>
       </div>
@@ -197,17 +151,17 @@
         <div class="card-body">
           <div class="last-event-division">
             <div class="last-event-header">
-              <h4>SRS EAWRC - Portugal</h4>
-              <span class="text-muted">Portugal</span>
+              <h4>SRS EAWRC - Estonia</h4>
+              <span class="text-muted">Estonia</span>
             </div>
             <div class="winner-info">
               <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-              <strong>Raandalf</strong>
-              <span class="winner-margin">vann med +00:00:36.746</span>
+              <strong>haguan</strong>
+              <span class="winner-margin">vann med +00:00:06.650</span>
             </div>
             <div class="last-event-meta">
               <span class="text-muted">40 deltagare</span>
-              <a href="./srseawrc-4-driver-results.html" class="home-btn-inline">Visa resultat</a>
+              <a href="./srseawrc-5-driver-results.html" class="home-btn-inline">Visa resultat</a>
             </div>
           </div>
           
@@ -237,7 +191,7 @@
                 <span class="points">246 poäng</span>
               </div>
             </div>
-            <p class="battle-remaining">1 tävlingar kvar</p>
+            <p class="battle-remaining">0 tävlingar kvar</p>
             <a href="./srseawrc-driver-standings.html" class="home-btn-inline">Visa ställning</a>
           </div>
           
@@ -257,10 +211,10 @@
               <span class="division-badge">SRS EAWRC</span>
             </div>
             <div class="form-guide-stats">
-              <span>3 segrar • 3 pallplatser senaste 3 tävlingarna</span>
+              <span>2 segrar • 3 pallplatser senaste 3 tävlingarna</span>
             </div>
             <div class="form-guide-recent">
-              Senaste placeringar: 1, 1, 1
+              Senaste placeringar: 1, 1, 3
             </div>
           </div>
           <hr class="last-event-separator">
@@ -274,7 +228,7 @@
               <span>0 segrar • 3 pallplatser senaste 3 tävlingarna</span>
             </div>
             <div class="form-guide-recent">
-              Senaste placeringar: 2, 3, 2
+              Senaste placeringar: 3, 2, 2
             </div>
           </div>
           
@@ -292,7 +246,7 @@
             <div class="season-stats-grid">
               <div class="stat-item">
                 <span class="stat-label">Genomförda tävlingar</span>
-                <span class="stat-value">5 / 6</span>
+                <span class="stat-value">6 / 6</span>
               </div>
               <div class="stat-item">
                 <span class="stat-label">Genomsnittligt antal deltagare</span>
@@ -300,7 +254,7 @@
               </div>
               <div class="stat-item">
                 <span class="stat-label">DNF-frekvens</span>
-                <span class="stat-value">53.5%</span>
+                <span class="stat-value">55.8%</span>
               </div>
               <div class="stat-item stat-highlight">
                 <span class="stat-label">Närmaste målgång</span>
