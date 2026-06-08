@@ -69,14 +69,6 @@
 </nav>
 
 
-      <div class="navRight navDesktopOnly">
-        <img
-          class="flag"
-          src="./assets/country-flags/aus.png"
-          alt="aus"
-        />
-        <span id="countdown2" class="countdown"></span>
-      </div>
 
     <button
       type="button"
@@ -90,7 +82,7 @@
 
     <div class="navTitle navMobileOnly">
           <div class="navTitle__main">driver - SRS DR2.0</div>
-      <div id="countdown" class="countdown"></div>
+      
     </div>
 
 		<button
@@ -168,34 +160,6 @@
     </div>
 </header>
 
-<script>
-  var countDownDate = new Date("2026-06-08T03:00:00Z").getTime();
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    var c1 = document.getElementById("countdown");
-    var c2 = document.getElementById("countdown2");
-    var c3 = document.getElementById("homeCountdown");
-    if (c1) c1.innerHTML = text;
-    if (c2) c2.innerHTML = text;
-    if (c3) c3.innerHTML = text;
-
-    if (distance < 0) {
-      clearInterval(x);
-      if (c1) c1.innerHTML = "Event Ended";
-      if (c2) c2.innerHTML = "Event Ended";
-      if (c3) c3.innerHTML = "Event Ended";
-    }
-  }, 1000);
-</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -489,7 +453,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">11</td>
@@ -514,7 +478,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">12</td>
@@ -539,7 +503,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">13</td>
@@ -564,7 +528,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">14</td>
@@ -589,7 +553,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">15</td>
@@ -614,7 +578,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">16</td>
@@ -639,7 +603,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">17</td>
@@ -664,7 +628,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">18</td>
@@ -689,7 +653,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">19</td>
@@ -714,7 +678,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">20</td>
@@ -739,7 +703,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">21</td>
@@ -764,7 +728,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">22</td>
@@ -789,7 +753,7 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
             <tr>
               <td class="td-pos">23</td>
@@ -814,13 +778,13 @@
               </td>
               <td class="td-ps-points"></td>
               <td class="td-points"></td>
-              <td class="td-total-points bold"></td>
+              <td class="td-total-points bold">DNS</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-06-08T00:00:47Z</p>
+        <p>Senast uppdaterad vid: 2026-06-08T04:24:20Z</p>
       </div>
     </div>
   </div>
