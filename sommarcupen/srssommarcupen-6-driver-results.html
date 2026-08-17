@@ -70,14 +70,6 @@
 </nav>
 
 
-      <div class="navRight navDesktopOnly">
-        <img
-          class="flag"
-          src="./assets/country-flags/ita.png"
-          alt="ita"
-        />
-        <span id="countdown2" class="countdown"></span>
-      </div>
 
     <button
       type="button"
@@ -91,7 +83,7 @@
 
     <div class="navTitle navMobileOnly">
           <div class="navTitle__main">driver - SRS SOMMARCUPEN</div>
-      <div id="countdown" class="countdown"></div>
+      
     </div>
 
 		<button
@@ -184,34 +176,6 @@
     </div>
 </header>
 
-<script>
-  var countDownDate = new Date("2026-08-17T03:00:00Z").getTime();
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    var c1 = document.getElementById("countdown");
-    var c2 = document.getElementById("countdown2");
-    var c3 = document.getElementById("homeCountdown");
-    if (c1) c1.innerHTML = text;
-    if (c2) c2.innerHTML = text;
-    if (c3) c3.innerHTML = text;
-
-    if (distance < 0) {
-      clearInterval(x);
-      if (c1) c1.innerHTML = "Event Ended";
-      if (c2) c2.innerHTML = "Event Ended";
-      if (c3) c3.innerHTML = "Event Ended";
-    }
-  }, 1000);
-</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -861,7 +825,7 @@
         </table>
       </div>
       <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-08-17T02:16:53Z</p>
+        <p>Senast uppdaterad vid: 2026-08-17T03:43:54Z</p>
       </div>
       <div class="text-center">
         <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">fullständigt resultat</a>
