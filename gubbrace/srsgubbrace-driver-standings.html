@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>
+    // Runs synchronously during HTML parsing - BEFORE first paint
+    (function() {
+      const getPageType = () => {
+        const pathname = window.location.pathname;
+        const filename = pathname.split("/").pop() || pathname;
+        if (filename.includes("-driver-results.html")) return "driver-results";
+        if (filename.includes("-standings.html")) return "standings";
+        return pathname.replace(/\//g, "_") || "root";
+      };
+      
+      const tableId = "tableDrivers";
+      const storageKey = `columnFilter_${getPageType()}_${tableId}`;
+      const hidden = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      
+      if (hidden.length > 0) {
+        const css = hidden.map(idx => 
+          `#${tableId} thead th:nth-child(${idx + 1}),
+           #${tableId} tbody tr td:nth-child(${idx + 1})`
+        ).join(',') + '{ display: none !important; }';
+        
+        document.write(`<style id="filter-preload">${css}</style>`);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="icon" href="./assets/SRS.png">
+  <title>SRS GUBBRACE | SRS GUBBRACE – Driver Standings</title>
+</head>
+
+<body class="theme-dark" style="background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+  <header class="siteHeader">
+  <div class="siteHeader__bar">
+    <div class="navLeft navDesktopOnly">
+      <div class="dropdown">
+        <a class="brand" href="./index.html" aria-label="Home">
+          <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
+        </a>
+
+        <div class="dropdown__menu" role="menu">
+            <div class="dropdown__title">— serier —</div>
+              <a class="dropdown__item" href="/srs-resultat/dr2">SRS DR2.0</a>
+              <a class="dropdown__item" href="/srs-resultat/eawrc">SRS EAWRC</a>
+              <a class="dropdown__item" href="/srs-resultat/sommarcupen">SRS SOMMARCUPEN</a>
+
+        </div>
+      </div>
+    </div>
+
+<nav class="navMain navDesktopOnly" aria-label="Primary">
+    <div class="navDrop" tabindex="0">
+      <button class="navBtn" type="button" aria-haspopup="true">
+        Poängställning
+      </button>
+
+      <div class="navMenu">
+            <a class="navLink isActive" href="./srsgubbrace-driver-standings.html">
+              SRS GUBBRACE
+            </a>
+      </div>
+    </div>
+
+
+</nav>
+
+
+      <div class="navRight navDesktopOnly">
+        <img
+          class="flag"
+          src="./assets/country-flags/fin.png"
+          alt="fin"
+        />
+        <span id="countdown2" class="countdown"></span>
+      </div>
+
+    <button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="seriesMobileNav"
+      aria-label="Choose series"
+      onclick="toggleControlledNav(this)"
+    >
+      <img class="brand__img brand__img--mobile" src="./assets/SRS.png" alt="Logo" />
+    </button>
+
+    <div class="navTitle navMobileOnly">
+          <div class="navTitle__main">driver - SRS GUBBRACE</div>
+      <div id="countdown" class="countdown"></div>
+    </div>
+
+		<button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="mobileNav"
+      aria-label="Open menu"
+      onclick="toggleControlledNav(this)"
+    >
+      <span class="hamburger" aria-hidden="true">☰</span>
+    </button>
+  </div>
+
+  <div id="mobileNav" class="drawer" hidden>
+    <nav class="drawer__content" aria-label="Mobile menu">
+          <a class="drawer__link isActive" href="./srsgubbrace-driver-standings.html">
+            Poängställning - SRS GUBBRACE
+          </a>
+
+
+    </nav>
+  </div>
+
+  <div id="seriesMobileNav" class="drawer" hidden>
+    <div class="drawer__content">
+        <div class="drawer__title">— serier —</div>
+          <a class="drawer__link" href="/srs-resultat/dr2">SRS DR2.0</a>
+          <a class="drawer__link" href="/srs-resultat/eawrc">SRS EAWRC</a>
+          <a class="drawer__link" href="/srs-resultat/sommarcupen">SRS SOMMARCUPEN</a>
+
+    </div>
+  </div>
+
+    <div class="secondaryNav">
+        <a
+          class="secondaryNav__item"
+          href="./srsgubbrace-0-driver-results.html"
+          style=""
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/fin.png" alt="fin" />
+        </a>
+    </div>
+</header>
+
+<script>
+  var countDownDate = new Date("2026-09-21T08:06:34.308Z").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+    var c3 = document.getElementById("homeCountdown");
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    if (c3) c3.innerHTML = text;
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      if (c3) c3.innerHTML = "Event Ended";
+    }
+  }, 1000);
+</script>
+
+  <div class="container">
+  <div class="flexContainer">
+    <div class="flexBox">
+      <div class="mb-1 hide-medium hide-small">
+        <div class="logo d-flex">
+          <img src="./assets/SRS.png" />
+          <h2 class="ml-1">SRS GUBBRACE Poängställning</h2>
+        </div>
+      </div>
+      <div class="column-filter">
+        <button class="column-filter__btn" type="button" aria-label="Filter columns">
+          <span>Filter Columns</span>
+        </button>
+        <div class="column-filter__menu">
+          <div class="column-filter__items"></div>
+          <div class="column-filter__actions">
+            <button class="column-filter__action-btn" data-action="show-all">Show All</button>
+            <button class="column-filter__action-btn" data-action="close">Close</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-scroll-indicator" id="tableScrollIndicator" aria-hidden="true">
+        <div class="table-scroll-indicator__content"></div>
+      </div>
+      <div class="table-scroll-wrapper">
+        <table id="tableDrivers">
+          <thead>
+            <tr>
+              <th class="th-pos">Pos</th>
+              <th class="th-change"></th>
+              <th class="th-nat">Nat</th>
+              <th class="th-driver">Förare</th>
+              <th class="th-car">Bil</th>
+
+                <th class="th-location">
+                  <a href="./srsgubbrace-0-driver-results.html" style="">
+                    <img src="./assets/country-flags/fin.png" alt="fin" title="fin"/>
+                  </a>
+                </th>
+              <th class="th-points">Poäng</th>
+              <th class="th-adr">ADR*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-pos">1</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">haguan</td>
+              <td class="td-car">
+                <img src="./assets/cars/ford.png" class="img-md" alt="ford"
+                  title="ford" />
+              </td>
+              <td class="td-result">
+                30
+              </td>
+              <td class="td-points bold">30</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">2</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">MrFrazze63</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                25
+              </td>
+              <td class="td-points bold">25</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">3</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">PV_544_1965</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                22
+              </td>
+              <td class="td-points bold">22</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">4</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Dyris_3</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                20
+              </td>
+              <td class="td-points bold">20</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">5</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">brolle68</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                18
+              </td>
+              <td class="td-points bold">18</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">6</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Kb747433</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                16
+              </td>
+              <td class="td-points bold">16</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">7</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Klimpen84</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                14
+              </td>
+              <td class="td-points bold">14</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">8</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Tollsson</td>
+              <td class="td-car">
+                <img src="./assets/cars/škoda.png" class="img-md" alt="škoda"
+                  title="škoda" />
+              </td>
+              <td class="td-result">
+                13
+              </td>
+              <td class="td-points bold">13</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">9</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">PatrikLindskog</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                12
+              </td>
+              <td class="td-points bold">12</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">10</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">RFranzen3</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                11
+              </td>
+              <td class="td-points bold">11</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">11</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">LeffeBa</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                10
+              </td>
+              <td class="td-points bold">10</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">12</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Unrealruskie</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                9
+              </td>
+              <td class="td-points bold">9</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Hockey_Eriksson</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                DNF
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Team_Rignell</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Noahunger475</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">rillepoint</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">seLsis19</td>
+              <td class="td-car">
+                <img src="./assets/cars/citroën.png" class="img-md" alt="citroën"
+                  title="citroën" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">J86P</td>
+              <td class="td-car">
+                <img src="./assets/cars/citroën.png" class="img-md" alt="citroën"
+                  title="citroën" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Kdj81</td>
+              <td class="td-car">
+                <img src="./assets/cars/toyota.png" class="img-md" alt="toyota"
+                  title="toyota" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">biffen99</td>
+              <td class="td-car">
+                <img src="./assets/cars/ford.png" class="img-md" alt="ford"
+                  title="ford" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">Auqualen</td>
+              <td class="td-car">
+                <img src="./assets/cars/ford.png" class="img-md" alt="ford"
+                  title="ford" />
+              </td>
+              <td class="td-result">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <p>Senast uppdaterad vid: 2026-09-17T14:47:00Z</p>
+      </div>
+      <div class="text-center">
+        <p>*After Dropped Rounds: total points after 1 lowest scoring rounds removed</p>
+      </div>
+      <div class="text-center">
+        <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">fullständigt resultat</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="./assets/js/app.js" defer></script>
+</body>
+
+</html>
