@@ -42,6 +42,7 @@
       <div class="dropdown">
         <a class="brand" href="./index.html" aria-label="Home">
           <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
+          <span class="brand__name">SRS GUBBRACE</span>
         </a>
 
         <div class="dropdown__menu" role="menu">
@@ -55,13 +56,24 @@
     </div>
 
 <nav class="navMain navDesktopOnly" aria-label="Primary">
-    <div class="navDrop" tabindex="0">
-      <button class="navBtn" type="button" aria-haspopup="true">
+  <a class="navBtn navBtn--link isActive" href="./index.html">
+    Hem
+  </a>
+    <div>
+      <a class="navBtn navBtn--link" href="./srsgubbrace-0-driver-results.html">
+        Resultat
+      </a>
+      <div class="navMenu">
+          <a class="navLink" href="./srsgubbrace-0-driver-results.html">SRS GUBBRACE</a>
+      </div>
+    </div>
+    <div>
+      <a class="navBtn navBtn--link" href="./srsgubbrace-driver-standings.html">
         Poängställning
-      </button>
+      </a>
 
       <div class="navMenu">
-            <a class="navLink " href="./srsgubbrace-driver-standings.html">
+            <a class="navLink" href="./srsgubbrace-driver-standings.html">
               SRS GUBBRACE
             </a>
       </div>
@@ -71,14 +83,6 @@
 </nav>
 
 
-      <div class="navRight navDesktopOnly">
-        <img
-          class="flag"
-          src="./assets/country-flags/fin.png"
-          alt="fin"
-        />
-        <span id="countdown2" class="countdown"></span>
-      </div>
 
     <button
       type="button"
@@ -91,8 +95,7 @@
     </button>
 
     <div class="navTitle navMobileOnly">
-          <div class="navTitle__main">SRS GUBBRACE</div>
-      <div id="countdown" class="countdown"></div>
+      <div class="navTitle__main">SRS GUBBRACE</div>
     </div>
 
 		<button
@@ -108,7 +111,13 @@
 
   <div id="mobileNav" class="drawer" hidden>
     <nav class="drawer__content" aria-label="Mobile menu">
-          <a class="drawer__link " href="./srsgubbrace-driver-standings.html">
+      <a class="drawer__link isActive" href="./index.html">
+        Hem
+      </a>
+        <a class="drawer__link" href="./srsgubbrace-0-driver-results.html">
+          Resultat - SRS GUBBRACE
+        </a>
+          <a class="drawer__link" href="./srsgubbrace-driver-standings.html">
             Poängställning - SRS GUBBRACE
           </a>
 
@@ -128,196 +137,225 @@
 
 </header>
 
-<script>
-  var countDownDate = new Date("2026-09-21T08:06:34.308Z").getTime();
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    var c1 = document.getElementById("countdown");
-    var c2 = document.getElementById("countdown2");
-    var c3 = document.getElementById("homeCountdown");
-    if (c1) c1.innerHTML = text;
-    if (c2) c2.innerHTML = text;
-    if (c3) c3.innerHTML = text;
-
-    if (distance < 0) {
-      clearInterval(x);
-      if (c1) c1.innerHTML = "Event Ended";
-      if (c2) c2.innerHTML = "Event Ended";
-      if (c3) c3.innerHTML = "Event Ended";
-    }
-  }, 1000);
-</script>
-
-  <div class="container">
-  <div class="flexContainer">
-    <div class="flexBox">
-      <div class="mb-1">
-        <div class="logo d-flex">
-          <img src="./assets/SRS.png" />
-          <h2 class="ml-1">SRS GUBBRACE Hem</h2>
-        </div>
+  <div class="container home">
+  <section class="home-hero home-hero--complete">
+    <div class="home-hero__body">
+      <div class="home-hero__eyebrow">
+        
+        <span>Säsongen avslutad · tävling 1 av 1</span>
       </div>
-      <div class="home-layout">
-        <main class="home-main">
-      <div class="home-hero card mb-1">
-        <div class="card-header">
-          <h3>🏁 Nuvarande tävlingar</h3>
-        </div>
-        <div class="card-body">
-          <div class="current-event-item">
-            <p><strong>SRS GUBBRACE</strong> - Finland</p>
-            <div class="home-actions">
-              <a href="./srsgubbrace-0-driver-results.html" class="home-btn home-btn--primary">
-                Visa resultat
-              </a>
-              <a href="./srsgubbrace-driver-standings.html" class="home-btn">
-                Visa ställning
-              </a>
-            </div>
-          </div>
-          <hr class="last-event-separator">
-          <div class="home-hero__live mb-1">
-            <img class="flag" src="./assets/country-flags/fin.png" alt="fin" />
-            <span id="homeCountdown" class="countdown"></span>
-          </div>
-        </div>
+      <h1 class="home-hero__title">
+        <span class="home-hero__title-line">Finland</span>
+      </h1>
+      <div class="home-hero__meta">
+        <img class="home-hero__flag" src="./assets/country-flags/fin.png" alt="fin" />
+        <span>SRS GUBBRACE</span>
       </div>
-
-
-      <div class="home-cards-grid">
-
-      <div class="card card--full-bg mb-1">
-        <div class="card-header">
-          <h3>⚔️ Mästerskapsstrider</h3>
-        </div>
-        <div class="card-body">
-          <div class="battle-item tight-battle">
-            <h4>SRS GUBBRACE</h4>
-            <div class="battle-leaders">
-              <div class="battle-driver">
-                <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-                <strong>Clyforce</strong>
-                <span class="points">30 poäng</span>
-              </div>
-              <div class="battle-gap">
-                <span class="gap-value">5 poängs skillnad</span>
-                <span class="gap-status tight">Jämnt!</span>
-              </div>
-              <div class="battle-driver">
-                <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-                Olsson1964byn
-                <span class="points">25 poäng</span>
-              </div>
-            </div>
-            <p class="battle-remaining">1 tävlingar kvar</p>
-            <a href="./srsgubbrace-driver-standings.html" class="home-btn-inline">Visa ställning</a>
-          </div>
-          
-        </div>
-      </div>
-      </div>
-
-
-
-      <div class="card mb-1">
-        <div class="card-header">
-          <h3>📊 Säsongsstatistik</h3>
-        </div>
-        <div class="card-body">
-          <div class="season-stats-division">
-            <h4>SRS GUBBRACE</h4>
-            <div class="season-stats-grid">
-              <div class="stat-item">
-                <span class="stat-label">Genomförda tävlingar</span>
-                <span class="stat-value">0 / 1</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-label">Genomsnittligt antal deltagare</span>
-                <span class="stat-value">0</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-label">DNF-frekvens</span>
-                <span class="stat-value">0%</span>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="card mb-1">
-        <div class="card-header">
-          <h3>Mästerskapsregler</h3>
-        </div>
-        <div class="card-body">
-          <p><strong>Drop Rounds:</strong> 1 lägst poängsatta tävling stryks</p>
-          <p><strong>Poäng (Topp 5):</strong> 30, 25, 22, 20, 18</p>
-        </div>
-      </div>
-
-        <div class="top-drivers-by-division mb-1">
-          <div class="top-drivers-division-grid">
-          <div class="card">
-            <div class="card-header">
-              <h3>🏅 Topp 3 förare – SRS GUBBRACE</h3>
-            </div>
-            <div class="card-body">
-              <table class="top-drivers-table">
-                <tbody>
-                  <tr>
-                    <td class="td-pos">1</td>
-                    <td class="td-change">
-                      <span class="neutral">=</span>
-                    </td>
-                    <td class="td-nat">
-                      <img src="./assets/country-flags/swe.png" class="img-sm"
-                        alt="swe" title="swe" />
-                    </td>
-                    <td class="td-driver text-left bold">Clyforce</td>
-                    <td class="td-points bold">30</td>
-                  </tr>
-                  <tr>
-                    <td class="td-pos">2</td>
-                    <td class="td-change">
-                      <span class="neutral">=</span>
-                    </td>
-                    <td class="td-nat">
-                      <img src="./assets/country-flags/swe.png" class="img-sm"
-                        alt="swe" title="swe" />
-                    </td>
-                    <td class="td-driver text-left bold">Olsson1964byn</td>
-                    <td class="td-points bold">25</td>
-                  </tr>
-                  <tr>
-                    <td class="td-pos">3</td>
-                    <td class="td-change">
-                      <span class="neutral">=</span>
-                    </td>
-                    <td class="td-nat">
-                      <img src="./assets/country-flags/swe.png" class="img-sm"
-                        alt="swe" title="swe" />
-                    </td>
-                    <td class="td-driver text-left bold">haguan</td>
-                    <td class="td-points bold">22</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          </div>
-        </div>
-        </main>
+      <div class="home-hero__actions">
+        <a class="home-btn home-btn--primary" href="./srsgubbrace-0-driver-results.html">Visa resultat</a>
+        <a class="home-btn" href="./srsgubbrace-driver-standings.html">Visa ställning</a>
       </div>
     </div>
+  </section>
+
+  <div class="home-duo">
+    <div class="home-duo__main">
+      <section class="home-card battle battle--tight">
+        <header class="home-card__head">
+          <h2 class="home-card__title">
+            Mästerskapsstrider
+            
+          </h2>
+          <span class="home-card__meta">
+            0 tävlingar kvar · 30 poäng max per deltävling
+          </span>
+        </header>
+        <div class="battle__grid">
+          <div class="battle__side">
+            <div class="battle__driver">
+              <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+              <span class="battle__name">Clyforce</span>
+            </div>
+            <div class="battle__points">
+              30
+              <span class="battle__points-unit">poäng</span>
+            </div>
+            <div class="battle__bar"><span class="battle__bar-fill" style="width: 100%"></span></div>
+          </div>
+          <div class="battle__gap">
+            <div class="battle__gap-value">+5</div>
+            <div class="battle__gap-label">poängs skillnad</div>
+            <span class="battle__badge battle__badge--tight">Jämnt!</span>
+          </div>
+          <div class="battle__side battle__side--right">
+            <div class="battle__driver">
+              <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+              <span class="battle__name">Olsson1964byn</span>
+            </div>
+            <div class="battle__points">
+              25
+              <span class="battle__points-unit">poäng</span>
+            </div>
+            <div class="battle__bar"><span class="battle__bar-fill battle__bar-fill--second" style="width: 83%"></span></div>
+          </div>
+        </div>
+        <footer class="battle__foot">
+          <span>0 poäng kvar att ta</span>
+          <a class="home-link" href="./srsgubbrace-driver-standings.html">Visa ställning →</a>
+        </footer>
+      </section>
+    </div>
+
+    <div class="home-duo__aside">
+      <section class="home-card">
+        <header class="home-card__head">
+          <h2 class="home-card__title">
+            Säsongen
+            
+          </h2>
+        </header>
+        <dl class="stat-list">
+          <div class="stat-row">
+            <dt>Deltävlingar</dt>
+            <dd>1 / 1</dd>
+          </div>
+          <div class="stat-row">
+            <dt>Förare i cupen</dt>
+            <dd>31</dd>
+          </div>
+          <div class="stat-row">
+            <dt>Olika vinnare</dt>
+            <dd>1</dd>
+          </div>
+          <div class="stat-row">
+            <dt>DNF hittills</dt>
+            <dd>9</dd>
+          </div>
+          <div class="stat-row">
+            <dt>Genomsnittligt antal deltagare</dt>
+            <dd>31</dd>
+          </div>
+        </dl>
+        <div class="stat-note">
+          <span class="stat-note__label">Närmaste målgång</span>
+          <span class="stat-note__value">+00:00:11.494</span>
+          <span class="stat-note__detail">Clyforce mot Olsson1964byn · Finland</span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="home-card">
+    <header class="home-card__head">
+      <h2 class="home-card__title">
+        Deltävlingar
+        <span class="home-card__title-note">SRS GUBBRACE</span>
+      </h2>
+    </header>
+    <div class="rounds-grid">
+      <a class="round-card round-card--done" href="./srsgubbrace-0-driver-results.html">
+        <div class="round-card__top">
+          <span class="round-card__round">R1</span>
+          <span class="round-card__badge">Klar</span>
+        </div>
+        <div class="round-card__name">Finland</div>
+        <div class="round-card__winner">Vinnare: Clyforce</div>
+      </a>
+    </div>
+  </section>
+
+  <div class="home-grid-2 home-grid-2--paired">
+    <section class="home-card">
+      <header class="home-card__head">
+        <h2 class="home-card__title">Senaste vinnare</h2>
+      </header>
+      <div class="home-card__body">
+        <div class="recap">
+          <div class="recap__head">
+            <span class="recap__event">Finland</span>
+            
+          </div>
+          <div class="recap__winner">
+            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+            <span class="recap__name">Clyforce</span>
+            <span class="recap__margin">vann med +00:00:11.494</span>
+          </div>
+          <div class="recap__foot">
+            <span>31 deltagare</span>
+            <a class="home-link" href="./srsgubbrace-0-driver-results.html">Visa resultat →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="home-grid-2">
+    <section class="home-card home-card--table">
+      <header class="home-card__head">
+        <h2 class="home-card__title">
+          Topp 3 förare
+          
+        </h2>
+      </header>
+      <table class="top-drivers-table">
+        <tbody>
+          <tr>
+            <td class="td-pos">1</td>
+            <td class="td-change">
+              <span class="neutral">=</span>
+            </td>
+            <td class="td-nat">
+              <img src="./assets/country-flags/swe.png" class="img-sm"
+                alt="swe" title="swe" />
+            </td>
+            <td class="td-driver text-left bold">Clyforce</td>
+            <td class="td-points bold">
+              30
+            </td>
+          </tr>
+          <tr>
+            <td class="td-pos">2</td>
+            <td class="td-change">
+              <span class="neutral">=</span>
+            </td>
+            <td class="td-nat">
+              <img src="./assets/country-flags/swe.png" class="img-sm"
+                alt="swe" title="swe" />
+            </td>
+            <td class="td-driver text-left bold">Olsson1964byn</td>
+            <td class="td-points bold">
+              25
+            </td>
+          </tr>
+          <tr>
+            <td class="td-pos">3</td>
+            <td class="td-change">
+              <span class="neutral">=</span>
+            </td>
+            <td class="td-nat">
+              <img src="./assets/country-flags/swe.png" class="img-sm"
+                alt="swe" title="swe" />
+            </td>
+            <td class="td-driver text-left bold">haguan</td>
+            <td class="td-points bold">
+              22
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="home-card">
+      <header class="home-card__head">
+        <h2 class="home-card__title">Mästerskapsregler</h2>
+      </header>
+      <div class="home-card__body">
+        <p class="rule"><span class="rule__label">Drop Rounds:</span> 1 lägst poängsatta tävling stryks</p>
+        <p class="rule"><span class="rule__label">Poäng (Topp 5):</span> 30, 25, 22, 20, 18</p>
+      </div>
+    </section>
   </div>
 </div>
 
