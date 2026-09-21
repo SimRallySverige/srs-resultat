@@ -4,31 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <script>
-    // Runs synchronously during HTML parsing - BEFORE first paint
-    (function() {
-      const getPageType = () => {
-        const pathname = window.location.pathname;
-        const filename = pathname.split("/").pop() || pathname;
-        if (filename.includes("-driver-results.html")) return "driver-results";
-        if (filename.includes("-standings.html")) return "standings";
-        return pathname.replace(/\//g, "_") || "root";
-      };
-      
-      const tableId = "tableDrivers";
-      const storageKey = `columnFilter_${getPageType()}_${tableId}`;
-      const hidden = JSON.parse(localStorage.getItem(storageKey) || "[]");
-      
-      if (hidden.length > 0) {
-        const css = hidden.map(idx => 
-          `#${tableId} thead th:nth-child(${idx + 1}),
-           #${tableId} tbody tr td:nth-child(${idx + 1})`
-        ).join(',') + '{ display: none !important; }';
-        
-        document.write(`<style id="filter-preload">${css}</style>`);
-      }
-    })();
-  </script>
+  <link rel="preload" href="./assets/fonts/BarlowCondensed-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/Barlow-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <link rel="icon" href="./assets/SRS.png">
@@ -139,19 +117,15 @@
 
 
   <div class="container home">
-  <section class="home-hero home-hero--complete">
+  <section class="home-hero home-hero--latest">
     <div class="home-hero__body">
       <div class="home-hero__eyebrow">
         
-        <span>Säsongen avslutad · tävling 1 av 1</span>
+        <span>Senaste resultat · tävling 1 av 4</span>
       </div>
       <h1 class="home-hero__title">
-        <span class="home-hero__title-line">Finland</span>
+        <span class="home-hero__title-line"><img class="home-hero__title-flag" src="./assets/country-flags/fin.png" alt="fin" />Finland</span>
       </h1>
-      <div class="home-hero__meta">
-        <img class="home-hero__flag" src="./assets/country-flags/fin.png" alt="fin" />
-        <span>SRS GUBBRACE</span>
-      </div>
       <div class="home-hero__actions">
         <a class="home-btn home-btn--primary" href="./srsgubbrace-0-driver-results.html">Visa resultat</a>
         <a class="home-btn" href="./srsgubbrace-driver-standings.html">Visa ställning</a>
@@ -160,90 +134,85 @@
   </section>
 
   <div class="home-duo">
-    <div class="home-duo__main">
-      <section class="home-card battle battle--tight">
-        <header class="home-card__head">
-          <h2 class="home-card__title">
-            Mästerskapsstrider
-            
-          </h2>
-          <span class="home-card__meta">
-            0 tävlingar kvar · 30 poäng max per deltävling
-          </span>
-        </header>
-        <div class="battle__grid">
-          <div class="battle__side">
-            <div class="battle__driver">
-              <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-              <span class="battle__name">Clyforce</span>
-            </div>
-            <div class="battle__points">
-              30
-              <span class="battle__points-unit">poäng</span>
-            </div>
-            <div class="battle__bar"><span class="battle__bar-fill" style="width: 100%"></span></div>
+    <section class="home-card home-duo__battle battle battle--tight">
+      <header class="home-card__head">
+        <h2 class="home-card__title">
+          Mästerskapsstrider
+          
+        </h2>
+        <span class="home-card__meta">
+          3 tävlingar kvar · 30 poäng max per deltävling
+        </span>
+      </header>
+      <div class="battle__grid">
+        <div class="battle__side">
+          <div class="battle__driver">
+            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+            <span class="battle__name">Clyforce</span>
           </div>
-          <div class="battle__gap">
-            <div class="battle__gap-value">+5</div>
-            <div class="battle__gap-label">poängs skillnad</div>
-            <span class="battle__badge battle__badge--tight">Jämnt!</span>
+          <div class="battle__points">
+            30
+            <span class="battle__points-unit">poäng</span>
           </div>
-          <div class="battle__side battle__side--right">
-            <div class="battle__driver">
-              <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-              <span class="battle__name">Olsson1964byn</span>
-            </div>
-            <div class="battle__points">
-              25
-              <span class="battle__points-unit">poäng</span>
-            </div>
-            <div class="battle__bar"><span class="battle__bar-fill battle__bar-fill--second" style="width: 83%"></span></div>
-          </div>
+          <div class="battle__bar"><span class="battle__bar-fill" style="width: 100%"></span></div>
         </div>
-        <footer class="battle__foot">
-          <span>0 poäng kvar att ta</span>
-          <a class="home-link" href="./srsgubbrace-driver-standings.html">Visa ställning →</a>
-        </footer>
-      </section>
-    </div>
-
-    <div class="home-duo__aside">
-      <section class="home-card">
-        <header class="home-card__head">
-          <h2 class="home-card__title">
-            Säsongen
-            
-          </h2>
-        </header>
-        <dl class="stat-list">
-          <div class="stat-row">
-            <dt>Deltävlingar</dt>
-            <dd>1 / 1</dd>
-          </div>
-          <div class="stat-row">
-            <dt>Förare i cupen</dt>
-            <dd>31</dd>
-          </div>
-          <div class="stat-row">
-            <dt>Olika vinnare</dt>
-            <dd>1</dd>
-          </div>
-          <div class="stat-row">
-            <dt>DNF hittills</dt>
-            <dd>9</dd>
-          </div>
-          <div class="stat-row">
-            <dt>Genomsnittligt antal deltagare</dt>
-            <dd>31</dd>
-          </div>
-        </dl>
-        <div class="stat-note">
-          <span class="stat-note__label">Närmaste målgång</span>
-          <span class="stat-note__value">+00:00:11.494</span>
-          <span class="stat-note__detail">Clyforce mot Olsson1964byn · Finland</span>
+        <div class="battle__gap">
+          <div class="battle__gap-value">+5</div>
+          <div class="battle__gap-label">poängs skillnad</div>
+          <span class="battle__badge battle__badge--tight">Jämnt!</span>
         </div>
-      </section>
-    </div>
+        <div class="battle__side battle__side--right">
+          <div class="battle__driver">
+            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
+            <span class="battle__name">Olsson1964byn</span>
+          </div>
+          <div class="battle__points">
+            25
+            <span class="battle__points-unit">poäng</span>
+          </div>
+          <div class="battle__bar"><span class="battle__bar-fill battle__bar-fill--second" style="width: 83%"></span></div>
+        </div>
+      </div>
+      <footer class="battle__foot">
+        <span>90 poäng kvar att ta</span>
+        <a class="home-link" href="./srsgubbrace-driver-standings.html">Visa ställning →</a>
+      </footer>
+    </section>
+    <section class="home-card home-duo__season">
+      <header class="home-card__head">
+        <h2 class="home-card__title">
+          Säsongen
+          
+        </h2>
+      </header>
+      <dl class="stat-list">
+        <div class="stat-row">
+          <dt>Deltävlingar</dt>
+          <dd>1 / 4</dd>
+        </div>
+        <div class="stat-row">
+          <dt>Förare i cupen</dt>
+          <dd>31</dd>
+        </div>
+        <div class="stat-row">
+          <dt>Olika vinnare</dt>
+          <dd>1</dd>
+        </div>
+        <div class="stat-row">
+          <dt>DNF hittills</dt>
+          <dd>9</dd>
+        </div>
+        <div class="stat-row">
+          <dt>Genomsnittligt antal deltagare</dt>
+          <dd>31</dd>
+        </div>
+      </dl>
+      <div class="stat-note">
+        <span class="stat-note__label">Närmaste målgång</span>
+        <span class="stat-note__value">+00:00:11.494</span>
+        <span class="stat-note__detail">Clyforce mot Olsson1964byn · Finland</span>
+      </div>
+    </section>
   </div>
 
   <section class="home-card">
@@ -261,6 +230,27 @@
         </div>
         <div class="round-card__name">Finland</div>
         <div class="round-card__winner">Vinnare: Clyforce</div>
+      </a>
+      <a class="round-card round-card--upcoming">
+        <div class="round-card__top">
+          <span class="round-card__round">R2</span>
+          <span class="round-card__badge">Kommande</span>
+        </div>
+        <div class="round-card__name">Meddelas senare</div>
+      </a>
+      <a class="round-card round-card--upcoming">
+        <div class="round-card__top">
+          <span class="round-card__round">R3</span>
+          <span class="round-card__badge">Kommande</span>
+        </div>
+        <div class="round-card__name">Meddelas senare</div>
+      </a>
+      <a class="round-card round-card--upcoming">
+        <div class="round-card__top">
+          <span class="round-card__round">R4</span>
+          <span class="round-card__badge">Kommande</span>
+        </div>
+        <div class="round-card__name">Meddelas senare</div>
       </a>
     </div>
   </section>
