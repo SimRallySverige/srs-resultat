@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <link rel="icon" href="./assets/SRS.png">
-  <title>SRS GUBBRACE | SRS GUBBRACE Finland Resultat</title>
+  <title>SRS GUBBRACE | SRS GUBBRACE Europe Resultat</title>
 </head>
 
 <body>
@@ -61,6 +61,10 @@
 </nav>
 
 
+      <div class="navRight navDesktopOnly">
+        <span class="countdown__dot" aria-hidden="true"></span>
+        <span id="countdown2" class="countdown"></span>
+      </div>
 
     <button
       type="button"
@@ -115,6 +119,63 @@
 
 </header>
 
+<script>
+  var countDownDate = new Date("2026-10-19T10:10:55.532Z").getTime();
+  var updateCountdown = function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+
+    // The homepage hero splits the same countdown into labelled units.
+    var clockUnits = {
+      homeClockDays: days,
+      homeClockHours: hours,
+      homeClockMinutes: minutes,
+      homeClockSeconds: seconds
+    };
+    var setClock = function(ended) {
+      Object.keys(clockUnits).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var value = ended ? 0 : clockUnits[id];
+        el.innerHTML = id === "homeClockDays" ? value : ("0" + value).slice(-2);
+      });
+      var label = document.getElementById("homeClockLabel");
+      if (label && ended) label.innerHTML = "Tävlingen avslutad";
+    };
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      setClock(true);
+      return false;
+    }
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    setClock(false);
+    return true;
+  };
+  var x;
+  if (updateCountdown()) x = setInterval(updateCountdown, 1000);
+  // This runs in the head, before the homepage hero exists, so the split
+  // clock is filled again as soon as the body has parsed rather than
+  // showing placeholders until the first tick.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCountdown();
+    });
+  }
+</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -124,7 +185,7 @@
           <div class="page-heading__eyebrow">
             SRS GUBBRACE · R1 av 4
           </div>
-          <h1 class="page-heading__title">Finland Resultat</h1>
+          <h1 class="page-heading__title">Europe Resultat</h1>
         </div>
         <div class="page-heading__navigation" aria-label="Event navigation">
         </div>
@@ -134,72 +195,13 @@
           class="secondaryNav__item secondaryNav__item--active"
           href="./srsgubbrace-0-driver-results.html"
           style=""
-          title="fin - R1"
+          title="eur - R1"
         >
-          <img class="secondaryNav__flag" src="./assets/country-flags/fin.png" alt="" />
-          <span class="secondaryNav__code">fin</span>
+          <img class="secondaryNav__flag" src="./assets/country-flags/eur.png" alt="" />
+          <span class="secondaryNav__code">eur</span>
         </a>
     </div>
 
-      <div class="podium">
-        <div class="podium__item podium__item--1">
-          <div class="podium__top">
-            <span class="podium__pos">1</span>
-            <span class="podium__points">30 poäng</span>
-          </div>
-          <div class="podium__name">
-            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-            <span>Clyforce</span>
-          </div>
-          <div class="podium__car">
-            <img class="podium__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-              title="toyota" />
-            <span>Toyota GR Yaris Rally2</span>
-          </div>
-          <div class="podium__times">
-            <span class="podium__total">01:09:52.293</span>
-            <span class="podium__gap">ledare</span>
-          </div>
-        </div>
-        <div class="podium__item podium__item--2">
-          <div class="podium__top">
-            <span class="podium__pos">2</span>
-            <span class="podium__points">25 poäng</span>
-          </div>
-          <div class="podium__name">
-            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-            <span>Olsson1964byn</span>
-          </div>
-          <div class="podium__car">
-            <img class="podium__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-              title="škoda" />
-            <span>ŠKODA Fabia RS Rally2</span>
-          </div>
-          <div class="podium__times">
-            <span class="podium__total">01:10:03.787</span>
-            <span class="podium__gap">+11.494</span>
-          </div>
-        </div>
-        <div class="podium__item podium__item--3">
-          <div class="podium__top">
-            <span class="podium__pos">3</span>
-            <span class="podium__points">22 poäng</span>
-          </div>
-          <div class="podium__name">
-            <img src="./assets/country-flags/swe.png" class="img-sm" alt="swe" />
-            <span>haguan</span>
-          </div>
-          <div class="podium__car">
-            <img class="podium__car-logo" src="./assets/cars/ford.png" alt="ford"
-              title="ford" />
-            <span>Ford Fiesta Rally2</span>
-          </div>
-          <div class="podium__times">
-            <span class="podium__total">01:10:18.063</span>
-            <span class="podium__gap">+25.770</span>
-          </div>
-        </div>
-      </div>
       <div class="column-chips" role="group" aria-label="Filter columns">
         <span class="column-chips__label" aria-hidden="true">Filter Columns</span>
         <div class="column-chips__items"></div>
@@ -222,663 +224,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="td-pos">1</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Clyforce</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:09:52.293</td>
-              <td class="td-diff">--</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">30</td>
-              <td class="td-total-points bold">30</td>
-            </tr>
-            <tr>
-              <td class="td-pos">2</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Olsson1964byn</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  <span class="td-driver__car-name">ŠKODA Fabia RS Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:10:03.787</td>
-              <td class="td-diff">+11.494</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">25</td>
-              <td class="td-total-points bold">25</td>
-            </tr>
-            <tr>
-              <td class="td-pos">3</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">haguan</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/ford.png" alt="ford"
-                    title="ford" />
-                  <span class="td-driver__car-name">Ford Fiesta Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:10:18.063</td>
-              <td class="td-diff">+25.770</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">22</td>
-              <td class="td-total-points bold">22</td>
-            </tr>
-            <tr>
-              <td class="td-pos">4</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">MrFrazze63</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:10:44.989</td>
-              <td class="td-diff">+52.696</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">20</td>
-              <td class="td-total-points bold">20</td>
-            </tr>
-            <tr>
-              <td class="td-pos">5</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">PV_544_1965</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:11:59.279</td>
-              <td class="td-diff">+2:06.986</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">18</td>
-              <td class="td-total-points bold">18</td>
-            </tr>
-            <tr>
-              <td class="td-pos">6</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Dyris_3</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:12:59.652</td>
-              <td class="td-diff">+3:07.359</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">16</td>
-              <td class="td-total-points bold">16</td>
-            </tr>
-            <tr>
-              <td class="td-pos">7</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">lundqvist71</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  <span class="td-driver__car-name">ŠKODA Fabia RS Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:13:02.479</td>
-              <td class="td-diff">+3:10.186</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">14</td>
-              <td class="td-total-points bold">14</td>
-            </tr>
-            <tr>
-              <td class="td-pos">8</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">brolle68</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:13:35.825</td>
-              <td class="td-diff">+3:43.532</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">13</td>
-              <td class="td-total-points bold">13</td>
-            </tr>
-            <tr>
-              <td class="td-pos">9</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Kb747433</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:14:37.786</td>
-              <td class="td-diff">+4:45.493</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">12</td>
-              <td class="td-total-points bold">12</td>
-            </tr>
-            <tr>
-              <td class="td-pos">10</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Klimpen84</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:14:55.428</td>
-              <td class="td-diff">+5:03.135</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">11</td>
-              <td class="td-total-points bold">11</td>
-            </tr>
-            <tr>
-              <td class="td-pos">11</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Tollsson</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  <span class="td-driver__car-name">ŠKODA Fabia RS Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:15:18.035</td>
-              <td class="td-diff">+5:25.742</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">10</td>
-              <td class="td-total-points bold">10</td>
-            </tr>
-            <tr>
-              <td class="td-pos">12</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">PatrikLindskog</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:16:25.422</td>
-              <td class="td-diff">+6:33.129</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">9</td>
-              <td class="td-total-points bold">9</td>
-            </tr>
-            <tr>
-              <td class="td-pos">13</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">RFranzen3</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:16:29.660</td>
-              <td class="td-diff">+6:37.367</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">8</td>
-              <td class="td-total-points bold">8</td>
-            </tr>
-            <tr>
-              <td class="td-pos">14</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">seLsis19</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/citroën.png" alt="citroën"
-                    title="citroën" />
-                  <span class="td-driver__car-name">Citroën C3 Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:17:14.609</td>
-              <td class="td-diff">+7:22.316</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">7</td>
-              <td class="td-total-points bold">7</td>
-            </tr>
-            <tr>
-              <td class="td-pos">15</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">davidomalin</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  <span class="td-driver__car-name">ŠKODA Fabia RS Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:17:19.027</td>
-              <td class="td-diff">+7:26.734</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">6</td>
-              <td class="td-total-points bold">6</td>
-            </tr>
-            <tr>
-              <td class="td-pos">16</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">J86P</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/citroën.png" alt="citroën"
-                    title="citroën" />
-                  <span class="td-driver__car-name">Citroën C3 Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:17:56.745</td>
-              <td class="td-diff">+8:04.452</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">17</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Auqualen</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/ford.png" alt="ford"
-                    title="ford" />
-                  <span class="td-driver__car-name">Ford Fiesta Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:20:28.384</td>
-              <td class="td-diff">+10:36.091</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">18</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">RattensRiddare</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  <span class="td-driver__car-name">ŠKODA Fabia RS Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:23:06.651</td>
-              <td class="td-diff">+13:14.358</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">19</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">GorsErallyManiac</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:23:24.869</td>
-              <td class="td-diff">+13:32.576</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">20</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">LeffeBa</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:28:53.912</td>
-              <td class="td-diff">+19:01.619</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">21</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Unrealruskie</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:31:15.935</td>
-              <td class="td-diff">+21:23.642</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">22</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Kdj81</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:41:51.971</td>
-              <td class="td-diff">+31:59.678</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points">5</td>
-              <td class="td-total-points bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">23</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Team_Rignell</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">01:45:53.356</td>
-              <td class="td-diff">+36:01.063</td>
-              <td class="td-sr">
-                1
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">24</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Hockey_Eriksson</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">02:20:47.087</td>
-              <td class="td-diff">+1:10:54.794</td>
-              <td class="td-sr">
-                1
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">25</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Ankan100</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  <span class="td-driver__car-name">Toyota GR Yaris Rally2</span>
-                </span>
-              </td>
-              <td class="td-total">02:43:21.753</td>
-              <td class="td-diff">+1:33:29.460</td>
-              <td class="td-sr">
-                1
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">26</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Lars_Wiik</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">27</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Zicc94</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">28</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Wiberg1</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">29</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Noahunger475</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">30</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">rillepoint</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
-            <tr>
-              <td class="td-pos">31</td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">biffen99</span>
-              </td>
-              <td class="td-total">—</td>
-              <td class="td-diff">N/A</td>
-              <td class="td-sr">
-                
-              </td>
-              <td class="td-points"></td>
-              <td class="td-total-points bold">DNF</td>
-            </tr>
           </tbody>
         </table>
       </div>
       <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-10-09T08:54:47Z</p>
+        <p>Senast uppdaterad vid: 2026-10-09T12:40:41Z</p>
       </div>
       <div class="text-center">
         <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">fullständigt resultat</a>
