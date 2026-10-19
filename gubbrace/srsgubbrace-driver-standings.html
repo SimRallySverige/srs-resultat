@@ -61,10 +61,6 @@
 </nav>
 
 
-      <div class="navRight navDesktopOnly">
-        <span class="countdown__dot" aria-hidden="true"></span>
-        <span id="countdown2" class="countdown"></span>
-      </div>
 
     <button
       type="button"
@@ -119,63 +115,6 @@
 
 </header>
 
-<script>
-  var countDownDate = new Date("2026-10-19T10:10:55.532Z").getTime();
-  var updateCountdown = function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    var c1 = document.getElementById("countdown");
-    var c2 = document.getElementById("countdown2");
-
-    // The homepage hero splits the same countdown into labelled units.
-    var clockUnits = {
-      homeClockDays: days,
-      homeClockHours: hours,
-      homeClockMinutes: minutes,
-      homeClockSeconds: seconds
-    };
-    var setClock = function(ended) {
-      Object.keys(clockUnits).forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        var value = ended ? 0 : clockUnits[id];
-        el.innerHTML = id === "homeClockDays" ? value : ("0" + value).slice(-2);
-      });
-      var label = document.getElementById("homeClockLabel");
-      if (label && ended) label.innerHTML = "Tävlingen avslutad";
-    };
-
-    if (distance < 0) {
-      clearInterval(x);
-      if (c1) c1.innerHTML = "Event Ended";
-      if (c2) c2.innerHTML = "Event Ended";
-      setClock(true);
-      return false;
-    }
-    if (c1) c1.innerHTML = text;
-    if (c2) c2.innerHTML = text;
-    setClock(false);
-    return true;
-  };
-  var x;
-  if (updateCountdown()) x = setInterval(updateCountdown, 1000);
-  // This runs in the head, before the homepage hero exists, so the split
-  // clock is filled again as soon as the body has parsed rather than
-  // showing placeholders until the first tick.
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function() {
-      updateCountdown();
-    });
-  }
-</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -183,7 +122,7 @@
       <div class="page-heading">
         <div class="page-heading__titles">
           <div class="page-heading__eyebrow">
-            SRS GUBBRACE · 1 av 4 deltävling körd
+            SRS GUBBRACE · 2 av 4 deltävlingar körda
           </div>
           <h1 class="page-heading__title">Poängställning</h1>
         </div>
@@ -682,8 +621,8 @@
               <td class="td-result is-score is-best">
                 8
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
               </td>
               <td class="td-points bold">8</td>
               <td class="td-adr bold">8</td>
@@ -738,8 +677,8 @@
               <td class="td-result is-score is-best">
                 7
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
               </td>
               <td class="td-points bold">7</td>
               <td class="td-adr bold">7</td>
@@ -794,8 +733,8 @@
               <td class="td-result is-score is-best">
                 6
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dnf is-dropped" title="stryks">
+                DNF
               </td>
               <td class="td-points bold">6</td>
               <td class="td-adr bold">6</td>
@@ -934,8 +873,8 @@
               <td class="td-result is-score is-best">
                 5
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
               </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
@@ -962,8 +901,8 @@
               <td class="td-result is-score is-best">
                 5
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
               </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
@@ -990,8 +929,8 @@
               <td class="td-result is-score is-best">
                 5
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
               </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
@@ -1043,11 +982,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns">
+                DNS
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1071,11 +1010,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dnf">
+                DNF
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1099,11 +1038,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dnf">
+                DNF
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1127,11 +1066,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns">
+                DNS
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1155,11 +1094,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dnf">
+                DNF
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1183,11 +1122,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns">
+                DNS
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1211,11 +1150,11 @@
                   
                 </span>
               </td>
-              <td class="td-result is-dnf">
+              <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
-              <td class="td-result is-empty">
-                
+              <td class="td-result is-dns">
+                DNS
               </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
@@ -1224,7 +1163,7 @@
         </table>
       </div>
       <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-10-19T04:47:51Z</p>
+        <p>Senast uppdaterad vid: 2026-10-19T10:50:17Z</p>
       </div>
       <div class="text-center">
         <p>*After Dropped Rounds: total points after 1 lowest scoring rounds removed</p>
