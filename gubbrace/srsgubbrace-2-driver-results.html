@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="preload" href="./assets/fonts/BarlowCondensed-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/Barlow-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="icon" href="./assets/SRS.png">
+  <title>SRS GUBBRACE | SRS GUBBRACE Latvia Resultat</title>
+</head>
+
+<body>
+  <header class="siteHeader">
+  <div class="siteHeader__bar">
+    <div class="navLeft navDesktopOnly">
+      <div class="dropdown">
+        <a class="brand" href="./index.html" aria-label="Home">
+          <img class="brand__img" src="./assets/SRS.png" alt="Logo" />
+          <span class="brand__name">SRS GUBBRACE</span>
+        </a>
+
+        <div class="dropdown__menu" role="menu">
+            <div class="dropdown__title">— serier —</div>
+              <a class="dropdown__item" href="/srs-resultat/dr2">SRS DR2.0</a>
+              <a class="dropdown__item" href="/srs-resultat/eawrc">SRS EAWRC</a>
+              <a class="dropdown__item" href="/srs-resultat/sommarcupen">SRS SOMMARCUPEN</a>
+
+        </div>
+      </div>
+    </div>
+
+<nav class="navMain navDesktopOnly" aria-label="Primary">
+  <a class="navBtn navBtn--link" href="./index.html">
+    Hem
+  </a>
+    <div>
+      <a class="navBtn navBtn--link isActive" href="./srsgubbrace-2-driver-results.html">
+        Resultat
+      </a>
+      <div class="navMenu">
+          <a class="navLink isActive" href="./srsgubbrace-2-driver-results.html">SRS GUBBRACE</a>
+      </div>
+    </div>
+    <div>
+      <a class="navBtn navBtn--link" href="./srsgubbrace-driver-standings.html">
+        Poängställning
+      </a>
+
+      <div class="navMenu">
+            <a class="navLink" href="./srsgubbrace-driver-standings.html">
+              SRS GUBBRACE
+            </a>
+      </div>
+    </div>
+
+
+</nav>
+
+
+      <div class="navRight navDesktopOnly">
+        <span class="countdown__dot" aria-hidden="true"></span>
+        <span id="countdown2" class="countdown"></span>
+      </div>
+
+    <button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="seriesMobileNav"
+      aria-label="Choose series"
+      onclick="toggleControlledNav(this)"
+    >
+      <img class="brand__img brand__img--mobile" src="./assets/SRS.png" alt="Logo" />
+    </button>
+
+    <div class="navTitle navMobileOnly">
+      <div class="navTitle__main">SRS GUBBRACE</div>
+    </div>
+
+		<button
+      type="button"
+      class="iconBtn navMobileOnly"
+      aria-controls="mobileNav"
+      aria-label="Open menu"
+      onclick="toggleControlledNav(this)"
+    >
+      <span class="hamburger" aria-hidden="true">☰</span>
+    </button>
+  </div>
+
+  <div id="mobileNav" class="drawer" hidden>
+    <nav class="drawer__content" aria-label="Mobile menu">
+      <a class="drawer__link" href="./index.html">
+        Hem
+      </a>
+        <a class="drawer__link isActive" href="./srsgubbrace-2-driver-results.html">
+          Resultat - SRS GUBBRACE
+        </a>
+          <a class="drawer__link" href="./srsgubbrace-driver-standings.html">
+            Poängställning - SRS GUBBRACE
+          </a>
+
+
+    </nav>
+  </div>
+
+  <div id="seriesMobileNav" class="drawer" hidden>
+    <div class="drawer__content">
+        <div class="drawer__title">— serier —</div>
+          <a class="drawer__link" href="/srs-resultat/dr2">SRS DR2.0</a>
+          <a class="drawer__link" href="/srs-resultat/eawrc">SRS EAWRC</a>
+          <a class="drawer__link" href="/srs-resultat/sommarcupen">SRS SOMMARCUPEN</a>
+
+    </div>
+  </div>
+
+</header>
+
+<script>
+  var countDownDate = new Date("2026-11-09T15:21:26.062Z").getTime();
+  var updateCountdown = function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+
+    // The homepage hero splits the same countdown into labelled units.
+    var clockUnits = {
+      homeClockDays: days,
+      homeClockHours: hours,
+      homeClockMinutes: minutes,
+      homeClockSeconds: seconds
+    };
+    var setClock = function(ended) {
+      Object.keys(clockUnits).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var value = ended ? 0 : clockUnits[id];
+        el.innerHTML = id === "homeClockDays" ? value : ("0" + value).slice(-2);
+      });
+      var label = document.getElementById("homeClockLabel");
+      if (label && ended) label.innerHTML = "Tävlingen avslutad";
+    };
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      setClock(true);
+      return false;
+    }
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    setClock(false);
+    return true;
+  };
+  var x;
+  if (updateCountdown()) x = setInterval(updateCountdown, 1000);
+  // This runs in the head, before the homepage hero exists, so the split
+  // clock is filled again as soon as the body has parsed rather than
+  // showing placeholders until the first tick.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCountdown();
+    });
+  }
+</script>
+
+  <div class="container">
+  <div class="flexContainer">
+    <div class="flexBox">
+      <div class="page-heading">
+        <div class="page-heading__titles">
+          <div class="page-heading__eyebrow">
+            SRS GUBBRACE · R3 av 4
+          </div>
+          <h1 class="page-heading__title">Latvia Resultat</h1>
+        </div>
+        <div class="page-heading__navigation" aria-label="Event navigation">
+          <a class="page-heading__nav-button" href="./srsgubbrace-1-driver-results.html">← Föregående</a>
+        </div>
+      </div>
+          <div class="secondaryNav">
+        <a
+          class="secondaryNav__item"
+          href="./srsgubbrace-0-driver-results.html"
+          style=""
+          title="fin - R1"
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/fin.png" alt="" />
+          <span class="secondaryNav__code">fin</span>
+        </a>
+        <a
+          class="secondaryNav__item"
+          href="./srsgubbrace-1-driver-results.html"
+          style=""
+          title="eur - R2"
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/eur.png" alt="" />
+          <span class="secondaryNav__code">eur</span>
+        </a>
+        <a
+          class="secondaryNav__item secondaryNav__item--active"
+          href="./srsgubbrace-2-driver-results.html"
+          style=""
+          title="lva - R3"
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/lva.png" alt="" />
+          <span class="secondaryNav__code">lva</span>
+        </a>
+    </div>
+
+      <div class="column-chips" role="group" aria-label="Filter columns">
+        <span class="column-chips__label" aria-hidden="true">Filter Columns</span>
+        <div class="column-chips__items"></div>
+      </div>
+      <div class="table-scroll-indicator" id="tableScrollIndicator" aria-hidden="true">
+        <div class="table-scroll-indicator__content"></div>
+      </div>
+      <div class="table-scroll-wrapper">
+        <table id="tableDrivers" class="event-results-table">
+          <thead>
+            <tr>
+              <th class="th-pos">Pos</th>
+              <th class="th-nat">Nat</th>
+              <th class="th-driver">Förare</th>
+              <th class="th-total">Total</th>
+              <th class="th-diff">Diff</th>
+              <th class="th-sr">SR</th>
+              <th class="th-points th-abbr" data-short="P"><span class="th-abbr__full">Poäng</span></th>
+              <th class="th-total-points th-abbr" data-short="Tot"><span class="th-abbr__full">Totalpoäng</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-pos">1</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Clyforce</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">2</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Lars_Wiik</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">3</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Olsson1964byn</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">4</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">haguan</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">5</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">MrFrazze63</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">6</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Dyris_3</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">7</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Tollsson</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">8</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">PatrikLindskog</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">9</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">lundqvist71</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">10</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Kb747433</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">11</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Zicc94</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">12</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Team_Rignell</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">13</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">PV_544_1965</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">14</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Klimpen84</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">15</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Wiberg1</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">16</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">LeffeBa</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">17</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Noahunger475</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">18</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">rillepoint</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">19</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Hockey_Eriksson</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">20</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">davidomalin</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">21</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">brolle68</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">22</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">RFranzen3</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">23</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">seLsis19</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">24</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Unrealruskie</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">25</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">J86P</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">26</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Kdj81</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">27</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">GorsErallyManiac</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">28</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Ankan100</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">29</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">RattensRiddare</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">30</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">biffen99</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">31</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Auqualen</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">32</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">Fr4nk1308</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">33</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">KluBBaN</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">34</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">funkisarna</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+            <tr>
+              <td class="td-pos">35</td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">MummrikenRacing</span>
+              </td>
+              <td class="td-total">—</td>
+              <td class="td-diff">N/A</td>
+              <td class="td-sr">
+                
+              </td>
+              <td class="td-points"></td>
+              <td class="td-total-points bold"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <p>Senast uppdaterad vid: 2026-10-30T19:29:35Z</p>
+      </div>
+      <div class="text-center">
+        <a href="https://racenet.com/ea_sports_wrc/clubs/19871" target="_none">fullständigt resultat</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="./assets/js/app.js" defer></script>
+</body>
+
+</html>

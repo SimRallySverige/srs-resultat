@@ -38,11 +38,11 @@
     Hem
   </a>
     <div>
-      <a class="navBtn navBtn--link" href="./srsgubbrace-1-driver-results.html">
+      <a class="navBtn navBtn--link" href="./srsgubbrace-2-driver-results.html">
         Resultat
       </a>
       <div class="navMenu">
-          <a class="navLink" href="./srsgubbrace-1-driver-results.html">SRS GUBBRACE</a>
+          <a class="navLink" href="./srsgubbrace-2-driver-results.html">SRS GUBBRACE</a>
       </div>
     </div>
     <div>
@@ -61,6 +61,10 @@
 </nav>
 
 
+      <div class="navRight navDesktopOnly">
+        <span class="countdown__dot" aria-hidden="true"></span>
+        <span id="countdown2" class="countdown"></span>
+      </div>
 
     <button
       type="button"
@@ -92,7 +96,7 @@
       <a class="drawer__link" href="./index.html">
         Hem
       </a>
-        <a class="drawer__link" href="./srsgubbrace-1-driver-results.html">
+        <a class="drawer__link" href="./srsgubbrace-2-driver-results.html">
           Resultat - SRS GUBBRACE
         </a>
           <a class="drawer__link isActive" href="./srsgubbrace-driver-standings.html">
@@ -115,6 +119,63 @@
 
 </header>
 
+<script>
+  var countDownDate = new Date("2026-11-09T15:21:26.062Z").getTime();
+  var updateCountdown = function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var text = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    var c1 = document.getElementById("countdown");
+    var c2 = document.getElementById("countdown2");
+
+    // The homepage hero splits the same countdown into labelled units.
+    var clockUnits = {
+      homeClockDays: days,
+      homeClockHours: hours,
+      homeClockMinutes: minutes,
+      homeClockSeconds: seconds
+    };
+    var setClock = function(ended) {
+      Object.keys(clockUnits).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var value = ended ? 0 : clockUnits[id];
+        el.innerHTML = id === "homeClockDays" ? value : ("0" + value).slice(-2);
+      });
+      var label = document.getElementById("homeClockLabel");
+      if (label && ended) label.innerHTML = "Tävlingen avslutad";
+    };
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (c1) c1.innerHTML = "Event Ended";
+      if (c2) c2.innerHTML = "Event Ended";
+      setClock(true);
+      return false;
+    }
+    if (c1) c1.innerHTML = text;
+    if (c2) c2.innerHTML = text;
+    setClock(false);
+    return true;
+  };
+  var x;
+  if (updateCountdown()) x = setInterval(updateCountdown, 1000);
+  // This runs in the head, before the homepage hero exists, so the split
+  // clock is filled again as soon as the body has parsed rather than
+  // showing placeholders until the first tick.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCountdown();
+    });
+  }
+</script>
 
   <div class="container">
   <div class="flexContainer">
@@ -146,6 +207,15 @@
           <img class="secondaryNav__flag" src="./assets/country-flags/eur.png" alt="" />
           <span class="secondaryNav__code">eur</span>
         </a>
+        <a
+          class="secondaryNav__item"
+          href="./srsgubbrace-2-driver-results.html"
+          style=""
+          title="lva - R3"
+        >
+          <img class="secondaryNav__flag" src="./assets/country-flags/lva.png" alt="" />
+          <span class="secondaryNav__code">lva</span>
+        </a>
     </div>
 
       <div class="column-chips" role="group" aria-label="Filter columns">
@@ -176,6 +246,12 @@
                       alt="eur R2" />
                   </a>
                 </th>
+                <th class="th-location">
+                  <a href="./srsgubbrace-2-driver-results.html" title="lva - R3" style="">
+                    <img class="th-location__flag" src="./assets/country-flags/lva.png"
+                      alt="lva R3" />
+                  </a>
+                </th>
               <th class="th-points">Poäng</th>
               <th class="th-adr" title="*After Dropped Rounds: total points after 1 lowest scoring rounds removed">ADR*</th>
             </tr>
@@ -184,9 +260,7 @@
             <tr>
               <td class="td-pos">1</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -206,15 +280,16 @@
               <td class="td-result is-score is-best">
                 30
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">55</td>
               <td class="td-adr bold">30</td>
             </tr>
             <tr>
               <td class="td-pos">2</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -233,6 +308,9 @@
               </td>
               <td class="td-result is-score is-dropped" title="stryks">
                 20
+              </td>
+              <td class="td-result is-empty">
+                
               </td>
               <td class="td-points bold">50</td>
               <td class="td-adr bold">30</td>
@@ -260,15 +338,16 @@
               <td class="td-result is-score is-best">
                 25
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">47</td>
               <td class="td-adr bold">25</td>
             </tr>
             <tr>
               <td class="td-pos">4</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;7
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -288,15 +367,16 @@
               <td class="td-result is-score is-best">
                 22
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">32</td>
               <td class="td-adr bold">22</td>
             </tr>
             <tr>
               <td class="td-pos">5</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -316,15 +396,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 18
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">38</td>
               <td class="td-adr bold">20</td>
             </tr>
             <tr>
               <td class="td-pos">6</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -344,15 +425,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 14
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">32</td>
               <td class="td-adr bold">18</td>
             </tr>
             <tr>
               <td class="td-pos">7</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -372,15 +454,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 13
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">29</td>
               <td class="td-adr bold">16</td>
             </tr>
             <tr>
               <td class="td-pos">8</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;15
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -400,15 +483,16 @@
               <td class="td-result is-score is-best">
                 16
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">16</td>
               <td class="td-adr bold">16</td>
             </tr>
             <tr>
               <td class="td-pos">9</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-2
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -428,15 +512,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 5
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">19</td>
               <td class="td-adr bold">14</td>
             </tr>
             <tr>
               <td class="td-pos">10</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-2
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -456,15 +541,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 9
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">22</td>
               <td class="td-adr bold">13</td>
             </tr>
             <tr>
               <td class="td-pos">11</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-2
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -484,15 +570,16 @@
               <td class="td-result is-score is-best">
                 12
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">24</td>
               <td class="td-adr bold">12</td>
             </tr>
             <tr>
               <td class="td-pos">12</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-2
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -512,15 +599,16 @@
               <td class="td-result is-score is-dropped" title="stryks">
                 5
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">16</td>
               <td class="td-adr bold">11</td>
             </tr>
             <tr>
               <td class="td-pos">13</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;10
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -540,15 +628,16 @@
               <td class="td-result is-score is-best">
                 11
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">11</td>
               <td class="td-adr bold">11</td>
             </tr>
             <tr>
               <td class="td-pos">14</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-2
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -568,15 +657,16 @@
               <td class="td-result is-score is-best">
                 10
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">19</td>
               <td class="td-adr bold">10</td>
             </tr>
             <tr>
               <td class="td-pos">15</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -596,15 +686,16 @@
               <td class="td-result is-score is-best">
                 8
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">13</td>
               <td class="td-adr bold">8</td>
             </tr>
             <tr>
               <td class="td-pos">16</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-3
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -624,15 +715,16 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">8</td>
               <td class="td-adr bold">8</td>
             </tr>
             <tr>
               <td class="td-pos">17</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -652,15 +744,16 @@
               <td class="td-result is-score is-best">
                 7
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">12</td>
               <td class="td-adr bold">7</td>
             </tr>
             <tr>
               <td class="td-pos">18</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-4
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -680,15 +773,16 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">7</td>
               <td class="td-adr bold">7</td>
             </tr>
             <tr>
               <td class="td-pos">19</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-3
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -708,15 +802,16 @@
               <td class="td-result is-score is-best">
                 6
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">11</td>
               <td class="td-adr bold">6</td>
             </tr>
             <tr>
               <td class="td-pos">20</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -736,15 +831,16 @@
               <td class="td-result is-dnf is-dropped" title="stryks">
                 DNF
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">6</td>
               <td class="td-adr bold">6</td>
             </tr>
             <tr>
               <td class="td-pos">21</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -764,43 +860,16 @@
               <td class="td-result is-score is-best">
                 5
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">10</td>
               <td class="td-adr bold">5</td>
             </tr>
             <tr>
               <td class="td-pos">22</td>
               <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;1
-                </span>
-              </td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">Ankan100</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
-                    title="toyota" />
-                  
-                </span>
-              </td>
-              <td class="td-result is-dnf is-dropped" title="stryks">
-                DNF
-              </td>
-              <td class="td-result is-score is-best">
-                5
-              </td>
-              <td class="td-points bold">5</td>
-              <td class="td-adr bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">22</td>
-              <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;1
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -820,33 +889,8 @@
               <td class="td-result is-score is-best">
                 5
               </td>
-              <td class="td-points bold">5</td>
-              <td class="td-adr bold">5</td>
-            </tr>
-            <tr>
-              <td class="td-pos">22</td>
-              <td class="td-change">
-                <span class="positive">
-                  <i class="arrow up"></i>&nbsp;1
-                </span>
-              </td>
-              <td class="td-nat">
-                <img src="./assets/country-flags/swe.png" class="img-sm"
-                  alt="swe" title="swe" />
-              </td>
-              <td class="td-driver text-left bold">
-                <span class="td-driver__name">MummrikenRacing</span>
-                <span class="td-driver__car">
-                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
-                    title="škoda" />
-                  
-                </span>
-              </td>
-              <td class="td-result is-dns is-dropped" title="stryks">
-                DNS
-              </td>
-              <td class="td-result is-score is-best">
-                5
+              <td class="td-result is-empty">
+                
               </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
@@ -854,9 +898,7 @@
             <tr>
               <td class="td-pos">22</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-6
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -876,15 +918,16 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
             </tr>
             <tr>
               <td class="td-pos">22</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-6
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -904,15 +947,16 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
             </tr>
             <tr>
               <td class="td-pos">22</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-6
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -932,22 +976,52 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">5</td>
               <td class="td-adr bold">5</td>
             </tr>
             <tr>
-              <td class="td-pos">28</td>
+              <td class="td-pos">22</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
                   alt="swe" title="swe" />
               </td>
               <td class="td-driver text-left bold">
-                <span class="td-driver__name">funkisarna</span>
+                <span class="td-driver__name">Ankan100</span>
+                <span class="td-driver__car">
+                  <img class="td-driver__car-logo" src="./assets/cars/toyota.png" alt="toyota"
+                    title="toyota" />
+                  
+                </span>
+              </td>
+              <td class="td-result is-dnf is-dropped" title="stryks">
+                DNF
+              </td>
+              <td class="td-result is-score is-best">
+                5
+              </td>
+              <td class="td-result is-empty">
+                
+              </td>
+              <td class="td-points bold">5</td>
+              <td class="td-adr bold">5</td>
+            </tr>
+            <tr>
+              <td class="td-pos">22</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">MummrikenRacing</span>
                 <span class="td-driver__car">
                   <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
                     title="škoda" />
@@ -957,18 +1031,19 @@
               <td class="td-result is-dns is-dropped" title="stryks">
                 DNS
               </td>
-              <td class="td-result is-dnf">
-                DNF
+              <td class="td-result is-score is-best">
+                5
               </td>
-              <td class="td-points bold">0</td>
-              <td class="td-adr bold">0</td>
+              <td class="td-result is-empty">
+                
+              </td>
+              <td class="td-points bold">5</td>
+              <td class="td-adr bold">5</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -988,15 +1063,16 @@
               <td class="td-result is-dns">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1016,15 +1092,16 @@
               <td class="td-result is-dnf">
                 DNF
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1044,15 +1121,16 @@
               <td class="td-result is-dnf">
                 DNF
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1072,15 +1150,16 @@
               <td class="td-result is-dns">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1100,15 +1179,16 @@
               <td class="td-result is-dnf">
                 DNF
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1128,15 +1208,16 @@
               <td class="td-result is-dns">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
             <tr>
               <td class="td-pos">28</td>
               <td class="td-change">
-                <span class="negative">
-                  <i class="arrow down"></i>&nbsp;-5
-                </span>
+                <span class="neutral">=</span>
               </td>
               <td class="td-nat">
                 <img src="./assets/country-flags/swe.png" class="img-sm"
@@ -1156,6 +1237,38 @@
               <td class="td-result is-dns">
                 DNS
               </td>
+              <td class="td-result is-empty">
+                
+              </td>
+              <td class="td-points bold">0</td>
+              <td class="td-adr bold">0</td>
+            </tr>
+            <tr>
+              <td class="td-pos">28</td>
+              <td class="td-change">
+                <span class="neutral">=</span>
+              </td>
+              <td class="td-nat">
+                <img src="./assets/country-flags/swe.png" class="img-sm"
+                  alt="swe" title="swe" />
+              </td>
+              <td class="td-driver text-left bold">
+                <span class="td-driver__name">funkisarna</span>
+                <span class="td-driver__car">
+                  <img class="td-driver__car-logo" src="./assets/cars/škoda.png" alt="škoda"
+                    title="škoda" />
+                  
+                </span>
+              </td>
+              <td class="td-result is-dns is-dropped" title="stryks">
+                DNS
+              </td>
+              <td class="td-result is-dnf">
+                DNF
+              </td>
+              <td class="td-result is-empty">
+                
+              </td>
               <td class="td-points bold">0</td>
               <td class="td-adr bold">0</td>
             </tr>
@@ -1163,7 +1276,7 @@
         </table>
       </div>
       <div class="text-center">
-        <p>Senast uppdaterad vid: 2026-10-30T14:16:26Z</p>
+        <p>Senast uppdaterad vid: 2026-10-30T19:29:35Z</p>
       </div>
       <div class="text-center">
         <p>*After Dropped Rounds: total points after 1 lowest scoring rounds removed</p>
